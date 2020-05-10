@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+if [ ! -f main.py ]; then
+  if [ -z "$PYTHON_MAIN_SOURCE" ]; then
+    echo "Must either define file $(pwd)/main.py or env variable PYTHON_MAIN_SOURCE"
+    exit 1
+  fi
+ 
+  echo "$PYTHON_MAIN_SOURCE" > main.py
+fi
+
+fwatchdog
